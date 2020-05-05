@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HDProject'
-  s.version          = '0.1.0'
+  s.version          = '15.0.0'
   s.summary          = 'A short description of HDProject.'
 
 # This description is used to generate tags and improve search results.
@@ -28,15 +28,19 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/anhlahieupro/HDProject.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
-  s.source_files = 'HDProject/Classes/**/*'
+  s.source_files = 'HDProject/HDProject/Files/**/*.{swift}'
   
-  # s.resource_bundles = {
-  #   'HDProject' => ['HDProject/Assets/*.png']
-  # }
+  s.resource_bundles = {
+      'HDProject' => ['HDProject/HDProject/Files/**/*.{storyboard,xib}']
+  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'UserNotifications', 'Foundation', 'Security', 'LocalAuthentication', 'FittedSheets', 'SVProgressHUD'
+  
+  s.dependency 'FittedSheets'
+  s.dependency 'SVProgressHUD'
+
+  s.static_framework = true
+
 end
