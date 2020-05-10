@@ -42,6 +42,42 @@ public class HDMessageView: HDDialogView {
 }
 
 public extension HDMessageView {
+    func show(isUseSystem: Bool,
+              from viewController: UIViewController? = UIApplication.shared.getTopViewController()) {
+        if !isUseSystem {
+            show()
+        } else {
+            let alertController = UIAlertController(title: nil,
+                                                    message: messageLabel.text,
+                                                    preferredStyle: .alert)
+            
+            if let yesTitle = yesButton.titleLabel?.text, !yesTitle.isEmpty {
+                let yesAction: (UIAlertAction) -> () = { [weak self] _ in
+                    guard let self = self else { return }
+                    self.yesAction(self.yesButton as Any)
+                }
+                let yesAlertAction = UIAlertAction(title: yesTitle,
+                                                   style: .default,
+                                                   handler: yesAction)
+                alertController.addAction(yesAlertAction)
+            }
+            
+            let noAction: (UIAlertAction) -> () = { [weak self] _ in
+                guard let self = self else { return }
+                self.noAction(self.noButton as Any)
+            }
+            let noTitle = noButton.titleLabel?.text ?? HDStringHelper.dismiss
+            let noAlertAction = UIAlertAction(title: noTitle,
+                                              style: .default,
+                                              handler: noAction)
+            alertController.addAction(noAlertAction)
+            
+            viewController?.present(alertController,
+                                    animated: true,
+                                    completion: nil)
+        }
+    }
+    
     private func setupViews(message: String, yesTitle: String, noTitle: String) {
         messageLabel.text = message
         yesButton.setTitle(yesTitle, for: .normal)

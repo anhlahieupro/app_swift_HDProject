@@ -95,11 +95,15 @@ public class SettingsTableViewController: HDBaseTableViewController {
 
 public extension SettingsTableViewController {
     class func show(from baseViewController: HDBaseViewController) {
-        presentSettings(from: baseViewController) { baseViewController.setupAdsView() }
+        presentSettings(from: baseViewController) {
+            baseViewController.setupAdsView()
+        }
     }
     
     class func show(from baseTableViewController: HDBaseTableViewController) {
-        presentSettings(from: baseTableViewController) { baseTableViewController.setupAdsView() }
+        presentSettings(from: baseTableViewController) {
+            baseTableViewController.setupAdsView()
+        }
     }
     
     private class func presentSettings(from viewController: UIViewController, willDismiss: @escaping () -> ()) {
@@ -107,13 +111,16 @@ public extension SettingsTableViewController {
         viewController.presentSheet(to: controller, willDismiss: willDismiss)
     }
     
-    private class func instantiate() -> SettingsTableViewController? {
+    class func instantiate() -> SettingsTableViewController? {
         let bundle = HDUtilities.isPod ? HDUtilities.getHDProjectBundle() : nil
         
         let storyboard = UIStoryboard(name: "SettingsStoryboard", bundle: bundle)
-        let storyboardId = String(format: "%@-%@", SettingsTableViewController.className, HDStringHelper.language.rawValue)
+        let storyboardId = String(format: "%@-%@",
+                                  SettingsTableViewController.className,
+                                  HDStringHelper.language.rawValue)
         
-        return storyboard.instantiate(SettingsTableViewController.self, withIdentifier: storyboardId)
+        return storyboard.instantiate(SettingsTableViewController.self,
+                                      withIdentifier: storyboardId)
     }
 }
 

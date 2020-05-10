@@ -1,10 +1,15 @@
+import UIKit
+
 public struct HDActionSheet {
-    public var title: String!
-    public typealias ActionSheetAction = () -> ()
-    public var action: ActionSheetAction = { }
+    public var title = ""
+    public var style = UIAlertAction.Style.default
+    public var action: () -> () = { }
     
-    public init(title: String, action: @escaping ActionSheetAction) {
+    public init(title: String,
+                style: UIAlertAction.Style = .default,
+                action: @escaping () -> ()) {
         self.title = title
+        self.style = style
         self.action = action
     }
 }

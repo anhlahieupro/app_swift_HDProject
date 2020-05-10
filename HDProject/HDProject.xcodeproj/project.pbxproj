@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470FFB7124678F8100798AF9 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FFB7024678F8100798AF9 /* UIApplication+Extension.swift */; };
 		47566D98237FF60C009D5983 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47566D97237FF60C009D5983 /* UIImage+Extension.swift */; };
 		4775267F23746AD500E4EB88 /* HieuDinhAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4775267E23746AD500E4EB88 /* HieuDinhAppViewController.swift */; };
 		4775268123746E9C00E4EB88 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4775268023746E9C00E4EB88 /* GoogleService-Info.plist */; };
@@ -70,6 +71,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		470FFB7024678F8100798AF9 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		47566D97237FF60C009D5983 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4775267E23746AD500E4EB88 /* HieuDinhAppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HieuDinhAppViewController.swift; sourceTree = "<group>"; };
 		4775268023746E9C00E4EB88 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				47F4A651236F028100AAA660 /* UITextField+Extension.swift */,
 				47566D97237FF60C009D5983 /* UIImage+Extension.swift */,
 				FA869288244B3FB8006EA1A3 /* UIStoryboard+Extension.swift */,
+				470FFB7024678F8100798AF9 /* UIApplication+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				47F4A684236F028100AAA660 /* UIView+Extension.swift in Sources */,
 				47F4A69C236F028100AAA660 /* HDActionSheet.swift in Sources */,
 				47F4A678236F028100AAA660 /* HDUtilities.swift in Sources */,
+				470FFB7124678F8100798AF9 /* UIApplication+Extension.swift in Sources */,
 				47F4A6A1236F028100AAA660 /* HDPickerView.swift in Sources */,
 				47F4A68D236F028100AAA660 /* SettingsTableViewController.swift in Sources */,
 				47F4A67A236F028100AAA660 /* HDNotification.swift in Sources */,

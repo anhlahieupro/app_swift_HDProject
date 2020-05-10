@@ -1,6 +1,9 @@
 import UIKit
 
 public class HDActionSheetView: HDDialogView {
+    private var title = ""
+    private var actionSheets = [HDActionSheet]()
+    
     public init(title: String, actionSheets: [HDActionSheet]) {
         super.init()
         setup(title: title, actionSheets: actionSheets)
@@ -25,7 +28,32 @@ public class HDActionSheetView: HDDialogView {
 }
 
 public extension HDActionSheetView {
+    func show(isUseSystem: Bool,
+              from viewController: UIViewController? = UIApplication.shared.getTopViewController()) {
+        if !isUseSystem {
+            show()
+        } else {
+            let alertController = UIAlertController(title: nil,
+                                                    message: title,
+                                                    preferredStyle: .actionSheet)
+            
+            for actionSheet in actionSheets {
+                let alertAction = UIAlertAction(title: actionSheet.title,
+                                                style: actionSheet.style,
+                                                handler: { _ in actionSheet.action() })
+                alertController.addAction(alertAction)
+            }
+            
+            viewController?.present(alertController,
+                                    animated: true,
+                                    completion: nil)
+        }
+    }
+    
     private func setup(title: String, actionSheets: [HDActionSheet]) {
+        self.title = title
+        self.actionSheets = actionSheets
+        
         contentView.setCornersRadius(corners: [.topLeft, .topRight], radius: 15)
         
         let buttonHeight: CGFloat = 45

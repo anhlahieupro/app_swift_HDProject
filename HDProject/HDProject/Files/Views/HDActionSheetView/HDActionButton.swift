@@ -1,8 +1,7 @@
 import UIKit
 
 public class HDActionButton: UIButton {
-    public typealias Action = () -> ()
-    @objc public var buttonActionTouchUpInside: (Action) = { }
+    @objc public var buttonActionTouchUpInside: () -> () = { }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
