@@ -18,7 +18,7 @@ class ViewController: HDBaseViewController {
     @IBAction func action(_ sender: Any) {
         //        HDMessageView(confirmMessage: "Message", yesTitle: "OK", noTitle: "Dismiss") { (_) in
         //            print("Message")
-        //        }.show(isUseSystem: false)
+        //        }.show()
         
         //        HDActionSheetView(title: "Message", actionSheets: HDActionSheet(title: "HDActionSheet", action: {
         //

@@ -32,23 +32,9 @@ public class HDMessageView: HDDialogView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @IBAction func yesAction(_ sender: Any) {
-        completion(true)
-        if isAutoDismiss { dismiss() }
-    }
-    
-    @IBAction func noAction(_ sender: Any) {
-        completion(false)
-        if isAutoDismiss { dismiss() }
-    }
-}
-
-public extension HDMessageView {
-    func show(from viewController: UIViewController?) {
-        let viewController = viewController ?? UIApplication.shared.getTopViewController()
-        
+    public override func show() {
         if !HDMessageView.isUseSystem {
-            show()
+            super.show()
         } else {
             let alertController = UIAlertController(title: nil,
                                                     message: messageLabel.text,
@@ -75,12 +61,25 @@ public extension HDMessageView {
                                               handler: noAction)
             alertController.addAction(noAlertAction)
             
+            let viewController = UIApplication.shared.getTopViewController()
             viewController?.present(alertController,
                                     animated: true,
                                     completion: nil)
         }
     }
     
+    @IBAction func yesAction(_ sender: Any) {
+        completion(true)
+        if isAutoDismiss { dismiss() }
+    }
+    
+    @IBAction func noAction(_ sender: Any) {
+        completion(false)
+        if isAutoDismiss { dismiss() }
+    }
+}
+
+public extension HDMessageView {
     private func setupViews(message: String, yesTitle: String, noTitle: String) {
         messageLabel.text = message
         yesButton.setTitle(yesTitle, for: .normal)

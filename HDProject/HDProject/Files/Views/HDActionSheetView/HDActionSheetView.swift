@@ -20,20 +20,8 @@ public class HDActionSheetView: HDDialogView {
     }
     
     override public func show() {
-        showFromBottom()
-    }
-    
-    override public func dismiss() {
-        dismissToBottom()
-    }
-}
-
-public extension HDActionSheetView {
-    func show(from viewController: UIViewController?) {
-        let viewController = viewController ?? UIApplication.shared.getTopViewController()
-        
         if !HDActionSheetView.isUseSystem {
-            show()
+            showFromBottom()
         } else {
             let alertController = UIAlertController(title: nil,
                                                     message: title,
@@ -46,12 +34,19 @@ public extension HDActionSheetView {
                 alertController.addAction(alertAction)
             }
             
+            let viewController = UIApplication.shared.getTopViewController()
             viewController?.present(alertController,
                                     animated: true,
                                     completion: nil)
         }
     }
     
+    override public func dismiss() {
+        dismissToBottom()
+    }
+}
+
+public extension HDActionSheetView {
     private func setup(title: String, actionSheets: [HDActionSheet]) {
         self.title = title
         self.actionSheets = actionSheets
