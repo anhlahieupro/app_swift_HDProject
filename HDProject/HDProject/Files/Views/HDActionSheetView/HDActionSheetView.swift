@@ -23,6 +23,7 @@ public class HDActionSheetView: HDDialogView {
         if !HDActionSheetView.isUseSystem {
             showFromBottom()
         } else {
+            let title: String? = (!self.title.isEmpty ? self.title : nil)
             let alertController = UIAlertController(title: nil,
                                                     message: title,
                                                     preferredStyle: .actionSheet)
