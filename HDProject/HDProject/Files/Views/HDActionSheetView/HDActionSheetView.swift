@@ -3,6 +3,7 @@ import UIKit
 public class HDActionSheetView: HDDialogView {
     private var title = ""
     private var actionSheets = [HDActionSheet]()
+    public static var isUseSystem = false
     
     public init(title: String, actionSheets: [HDActionSheet]) {
         super.init()
@@ -28,9 +29,10 @@ public class HDActionSheetView: HDDialogView {
 }
 
 public extension HDActionSheetView {
-    func show(isUseSystem: Bool,
-              from viewController: UIViewController? = UIApplication.shared.getTopViewController()) {
-        if !isUseSystem {
+    func show(from viewController: UIViewController?) {
+        let viewController = viewController ?? UIApplication.shared.getTopViewController()
+        
+        if !HDActionSheetView.isUseSystem {
             show()
         } else {
             let alertController = UIAlertController(title: nil,

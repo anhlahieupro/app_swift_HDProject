@@ -5,8 +5,10 @@ public class HDMessageView: HDDialogView {
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     public typealias MessageCompletion = (_ isConfirm: Bool) -> ()
-    public var isAutoDismiss = true
     public var completion: MessageCompletion = { (_) in }
+    
+    public var isAutoDismiss = true
+    public static var isUseSystem = false
     
     public init(message: String,
                 noTitle: String = HDStringHelper.dismiss,
@@ -42,9 +44,10 @@ public class HDMessageView: HDDialogView {
 }
 
 public extension HDMessageView {
-    func show(isUseSystem: Bool,
-              from viewController: UIViewController? = UIApplication.shared.getTopViewController()) {
-        if !isUseSystem {
+    func show(from viewController: UIViewController?) {
+        let viewController = viewController ?? UIApplication.shared.getTopViewController()
+        
+        if !HDMessageView.isUseSystem {
             show()
         } else {
             let alertController = UIAlertController(title: nil,
