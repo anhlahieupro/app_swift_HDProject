@@ -230,11 +230,17 @@ public extension HDPasscodeView {
 
 public extension HDPasscodeView {
     static func showIfNeeded(isHiddenFaceIdAndTouchId: Bool = false) {
-        guard !HDPasscodeView.getCurrentPasscode().isEmpty, let window = HDAppDelegateHelper.window else { return }
+        guard !HDPasscodeView.getCurrentPasscode().isEmpty,
+            let window = HDAppDelegateHelper.window else { return }
+        
         for subview in window.subviews where subview is HDPasscodeView {
             guard let passcodeView = subview as? HDPasscodeView else { return }
-            if passcodeView.mode == .check { return }
+            if passcodeView.mode == .check {
+                passcodeView.faceIdAndTouchIdButton.isHidden = isHiddenFaceIdAndTouchId
+                return
+            }
         }
+        
         let passcodeView = HDPasscodeView(mode: .check)
         passcodeView.faceIdAndTouchIdButton.isHidden = isHiddenFaceIdAndTouchId
         passcodeView.show()
