@@ -141,11 +141,11 @@ public extension SettingsTableViewController {
     }
     
     func setupUsername() {
-        usernameLabel.text = SettingsTableViewController.username
+        usernameLabel?.text = SettingsTableViewController.username
     }
     
     func reloadData() {
-        tableView.reloadData()
+        tableView?.reloadData()
     }
 }
 
@@ -165,8 +165,12 @@ extension SettingsTableViewController {
     }
     
     private func setupRemoveCell() {
-        removeLabel.textColor = UserDefaults.isRemovedAds() ? restoreLabel.textColor?.withAlphaComponent(0.2) : restoreLabel.textColor
-        tableView.cellForRow(at: SettingIndexPath.removeAds)?.selectionStyle = UserDefaults.isRemovedAds() ? .none : .default
+        let restoreColor = restoreLabel?.textColor
+        let color = UserDefaults.isRemovedAds() ? restoreColor?.withAlphaComponent(0.2) : restoreColor
+        removeLabel?.textColor = color
+
+        let cell = tableView?.cellForRow(at: SettingIndexPath.removeAds)
+        cell?.selectionStyle = UserDefaults.isRemovedAds() ? .none : .default
     }
 }
 
