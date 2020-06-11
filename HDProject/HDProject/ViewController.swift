@@ -41,5 +41,7 @@ class ViewController: HDBaseViewController {
         //                                         PickerModel.init(title: "cc", data: "cc")]).show()
         //
         //        HDDatePickerView.init(currentDate: Date(), mode: .dateAndTime).show()
+        
+        SettingsTableViewController.show(from: self)
     }
 }
