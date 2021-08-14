@@ -1,7 +1,7 @@
 import UIKit
 
 public extension UITextField {
-    func setDoneButtonOnKeyboard(completion: @escaping () -> () = { }) {
+    func setDoneButtonOnKeyboard(title: String = HDStringHelper.done, completion: @escaping () -> () = { }) {
         let flexibleSpaceBarButtonItem = HDActionBarButtonItem.initFlexibleSpace()
         let doneAction: () -> () = { [weak self] in
             guard let self = self else { return }
