@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'HDProject'
-  s.version          = '15.0.0'
+  s.version          = '15.0.1'
   s.summary          = 'A short description of HDProject.'
 
 # This description is used to generate tags and improve search results.
@@ -38,7 +38,7 @@ TODO: Add long description of the pod here.
 
   s.frameworks = 'UIKit', 'UserNotifications', 'Foundation', 'Security', 'LocalAuthentication', 'FittedSheets', 'SVProgressHUD'
   
-  s.dependency 'FittedSheets'
+  s.dependency 'FittedSheets', '1.4.6'
   s.dependency 'SVProgressHUD'
 
   s.static_framework = true
